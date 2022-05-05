@@ -26,6 +26,7 @@ html {
     --megento-8: #0e7c86;
     --megento-9: #0a6c74;
     --megento-10: #044e54;
+    --tracker-1: #2dfd66;
     --black: #222;
     --yellow: #fff;
     --grey-1: #f0f4f8;
@@ -157,4 +158,9 @@ ul {
 .buttn:hover {
     background: var(--buttonhovergradient);
     box-shadow: var(--shadow-3);
+}
+.container {
+    width: var(--fluid-width);
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
