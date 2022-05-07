@@ -15,7 +15,8 @@ const MainLanding = () => {
                         job <span>tracking</span> App
                     </h1>
                     <p>
-                        Mange Your Company <sup>Time</sup>
+                        Prioritize wisely
+                        <sup>Time & Task</sup>
                     </p>
                     <button
                         style={{
