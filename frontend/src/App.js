@@ -1,10 +1,12 @@
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainLanding from './tab/MainLanding';
 function App() {
     return (
-        <div>
-            <MainLanding />
-        </div>
+        <Router>
+            <Routes>
+                <Route path='/' element={<div>Landing</div>} />
+            </Routes>
+        </Router>
     );
 }
 
