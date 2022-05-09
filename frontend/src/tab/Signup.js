@@ -3,13 +3,13 @@ import GlobalStyle from '../resources/normalizestyle /SignUp';
 import Tyoposti from '../component/Tyoposti';
 import FromInfo from '../component/FromInfo';
 import { Notify } from '../component';
+import { useFullContext } from '../context/fullContext';
 
 const primaryData = {
     userName: '',
     userEmail: '',
     userpassword: '',
-    isClient: true,
-    showNotification: true
+    isClient: true
 };
 
 const Signup = () => {
@@ -17,6 +17,8 @@ const Signup = () => {
         values,
         setValues
     ] = useState(primaryData);
+
+    const { showNotification, isLoading } = useFullContext();
 
     const switchMember = () => {
         setValues({ ...values, isClient: !values.isClient });
@@ -35,7 +37,7 @@ const Signup = () => {
             <form className='form' onSubmit={handelSubmit}>
                 <Tyoposti />
                 <h3>{values.isClient ? 'Signin' : 'Signup'}</h3>
-                {values.showNotification && <Notify />}
+                {showNotification && <Notify />}
 
                 {/* User information collector */}
 
