@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import GlobalStyle from '../resources/normalizestyle /SignUp';
 import Tyoposti from '../component/Tyoposti';
+import FromInfo from '../component/FromInfo';
 
 const primaryData = {
     userName: '',
-    usetemail: '',
+    userEmail: '',
     userpassword: '',
     userIsMember: true
 };
@@ -28,18 +29,18 @@ const Signup = () => {
             <form className='form' onSubmit={handelSubmit}>
                 <Tyoposti />
                 <h3>Signin</h3>
-                <div className='form-row'>
-                    <label htmlFor='userName' className='form-label'>
-                        Name
-                    </label>
-                    <input
-                        type='text'
-                        value={values.userName}
-                        userName='userName'
-                        onChange={onChange}
-                        className='form-input-elements'
-                    />
-                </div>
+
+                {/* User information collector */}
+
+                {/*------- user name input box-------*/}
+                <FromInfo type='text' name='Name' value={values.userName} onChange={onChange} />
+
+                {/*------- user email input box -------*/}
+                <FromInfo type='email' name='Email' value={values.userEmail} onChange={onChange} />
+
+                {/*------- user password-------*/}
+                <FromInfo type='password' name='password' value={values.userEmail} onChange={onChange} />
+
                 <button type='submit' className='buttn submit-button'>
                     {' '}
                     submit
