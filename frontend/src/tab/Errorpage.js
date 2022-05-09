@@ -38,7 +38,7 @@ const Errorpage = () => {
                 <img src={img404} alt='404' />
                 <h3>page not found</h3>
                 <p>It seems the pages you are looking does not exist</p>
-                <Link to='/' className='button1'>
+                <Link to='/' className=' buttn error-button '>
                     Back Home
                 </Link>
             </div>
