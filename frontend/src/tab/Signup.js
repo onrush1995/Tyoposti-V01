@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import GlobalStyle from '../resources/normalizestyle /SignUp';
 import Tyoposti from '../component/Tyoposti';
 import FromInfo from '../component/FromInfo';
+import { Notify } from '../component';
 
 const primaryData = {
     userName: '',
     userEmail: '',
     userpassword: '',
-    userIsMember: true
+    userIsMember: true,
+    showNotification: true
 };
 
 const Signup = () => {
@@ -29,6 +31,7 @@ const Signup = () => {
             <form className='form' onSubmit={handelSubmit}>
                 <Tyoposti />
                 <h3>Signin</h3>
+                {values.showNotification && <Notify />}
 
                 {/* User information collector */}
 
