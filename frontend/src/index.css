@@ -31,14 +31,7 @@ html {
     --yellow: #fff;
     --grey-1: #f0f4f8;
     --grey-2: #d9e2ec;
-    --grey-3: #bcccdc;
-    --grey-4: #9fb3c8;
-    --grey-5: #829ab1;
-    --grey-6: #627d98;
-    --grey-7: #486581;
-    --grey-8: #334e68;
-    --grey-9: #243b53;
-    --grey-10: #102a43;
+    --error-paragraph: #2dfd66;
     --buttonhovergradient: linear-gradient(
         90deg,
         rgba(131, 58, 180, 1) 0%,
