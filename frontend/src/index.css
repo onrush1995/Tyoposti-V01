@@ -163,6 +163,10 @@ ul {
     padding: 0.5rem 1.25rem;
 }
 
+.btn-block {
+    width: 100%;
+}
+
 .buttn:hover {
     background: var(--buttonhovergradient);
     box-shadow: var(--shadow-3);
@@ -250,4 +254,14 @@ ul {
 .notify-green {
     color: var(--green-dark);
     background: var(--green-light);
+}
+
+.toggle-button {
+    border: none;
+    color: #4caf50;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    cursor: pointer;
 }

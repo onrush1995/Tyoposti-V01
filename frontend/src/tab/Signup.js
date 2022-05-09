@@ -8,7 +8,7 @@ const primaryData = {
     userName: '',
     userEmail: '',
     userpassword: '',
-    userIsMember: true,
+    isClient: true,
     showNotification: true
 };
 
@@ -17,6 +17,10 @@ const Signup = () => {
         values,
         setValues
     ] = useState(primaryData);
+
+    const switchMember = () => {
+        setValues({ ...values, isClient: !values.isClient });
+    };
 
     const onChange = (event) => {
         console.log(event.target);
@@ -30,13 +34,12 @@ const Signup = () => {
         <GlobalStyle className='full-page'>
             <form className='form' onSubmit={handelSubmit}>
                 <Tyoposti />
-                <h3>Signin</h3>
+                <h3>{values.isClient ? 'Signin' : 'Signup'}</h3>
                 {values.showNotification && <Notify />}
 
                 {/* User information collector */}
 
-                {/*------- user name input box-------*/}
-                <FromInfo type='text' name='Name' value={values.userName} onChange={onChange} />
+                {!values.isClient && <FromInfo type='text' name='Name' value={values.userName} onChange={onChange} />}
 
                 {/*------- user email input box -------*/}
                 <FromInfo type='email' name='Email' value={values.userEmail} onChange={onChange} />
@@ -48,6 +51,12 @@ const Signup = () => {
                     {' '}
                     submit
                 </button>
+                <p>
+                    {values.isClient ? 'Not a registered client?' : 'Already a registered client?'}
+                    <button type='button' onClick={switchMember} className='toggle-button'>
+                        {values.isClient ? 'Signup' : 'Signin'}
+                    </button>
+                </p>
             </form>
         </GlobalStyle>
     );
