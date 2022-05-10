@@ -6,9 +6,9 @@ import { Notify } from '../component';
 import { useFullContext } from '../context/fullContext';
 
 const primaryData = {
-    userName: '',
-    userEmail: '',
-    userpassword: '',
+    name: '',
+    email: '',
+    password: '',
     isClient: true
 };
 
@@ -18,19 +18,26 @@ const Signup = () => {
         setValues
     ] = useState(primaryData);
 
-    const { showNotification, isLoading } = useFullContext();
-
-    const switchMember = () => {
-        setValues({ ...values, isClient: !values.isClient });
-    };
+    const { showNotification, isLoading, poupNotification } = useFullContext();
 
     const onChange = (event) => {
-        console.log(event.target);
+        setValues({ ...values, [event.target.name]: event.target.value });
     };
 
     const handelSubmit = (event) => {
         event.preventDefault();
-        console.log(event.target);
+
+        const { name, email, password, isMember } = values;
+
+        if (!email || !password || (isMember && !name)) {
+            poupNotification();
+            return;
+        }
+        console.log(values);
+    };
+
+    const switchMember = () => {
+        setValues({ ...values, isClient: !values.isClient });
     };
     return (
         <GlobalStyle className='full-page'>
@@ -41,13 +48,13 @@ const Signup = () => {
 
                 {/* User information collector */}
 
-                {!values.isClient && <FromInfo type='text' name='Name' value={values.userName} onChange={onChange} />}
+                {!values.isClient && <FromInfo type='text' name='name' value={values.name} onChange={onChange} />}
 
                 {/*------- user email input box -------*/}
-                <FromInfo type='email' name='Email' value={values.userEmail} onChange={onChange} />
+                <FromInfo type='email' name='email' value={values.email} onChange={onChange} />
 
                 {/*------- user password-------*/}
-                <FromInfo type='password' name='password' value={values.userEmail} onChange={onChange} />
+                <FromInfo type='password' name='password' value={values.password} onChange={onChange} />
 
                 <button type='submit' className='buttn submit-button'>
                     {' '}
@@ -55,7 +62,7 @@ const Signup = () => {
                 </button>
                 <p>
                     {values.isClient ? 'Not a registered client?' : 'Already a registered client?'}
-                    <button type='button' onClick={switchMember} className='toggle-button'>
+                    <button type='button' onClick={switchMember} className='toggle-btn'>
                         {values.isClient ? 'Signup' : 'Signin'}
                     </button>
                 </p>
