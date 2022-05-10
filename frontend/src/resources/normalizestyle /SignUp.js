@@ -9,7 +9,8 @@ const GlobalStyle = styled.section`
         margin-bottom: 1.38rem;
     }
     .form {
-        max-width: 1000px;
+        max-width: 100%;
+        max-height: 100%;
         border-top: 5px solid var(--tracker-1);
     }
     h3 {
@@ -23,13 +24,13 @@ const GlobalStyle = styled.section`
     .btn {
         margin-top: 1.1rem;
     }
-    .member-btn {
+    .toggle-btn {
         background: transparent;
-        border: transparent;
-        color: var(--shiny-orange);
-        cursor: pointer;
         letter-spacing: var(--letterSpacing);
-        text-align: center;
+        font-weight: 900;
+        border: transparent;
+        color: var(--megento-6);
+        cursor: pointer;
     }
 `;
 

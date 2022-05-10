@@ -9,7 +9,7 @@ const primaryData = {
     name: '',
     email: '',
     password: '',
-    isClient: true
+    isClient: false
 };
 
 const Signup = () => {
@@ -27,9 +27,9 @@ const Signup = () => {
     const handelSubmit = (event) => {
         event.preventDefault();
 
-        const { name, email, password, isMember } = values;
+        const { name, email, password, isClient } = values;
 
-        if (!email || !password || (isMember && !name)) {
+        if (!email || !password || (!isClient && !name)) {
             poupNotification();
             return;
         }

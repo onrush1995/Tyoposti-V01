@@ -1,7 +1,9 @@
 import React from 'react';
+import { useFullContext } from '../context/fullContext';
 
 const Notify = () => {
-    return <div className='notify notify-red'>Notification </div>;
+    const { notifyType, notifyText } = useFullContext();
+    return <div className={`notify ${notifyType}`}>{notifyText}</div>;
 };
 
 export default Notify;

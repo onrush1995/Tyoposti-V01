@@ -39,12 +39,13 @@ html {
         rgba(252, 176, 69, 1) 100%
     );
 
-    /* /body style for the application */
+    /* /style for the application */
     --bodyFont: 'Cabin', Sans-Serif, "Roboto";
     --headingFont: 'Roboto Condensed', Sans-Serif;
     --small-text: 0.875rem;
     --extra-small-text: 0.7em;
     --max-width: 1120px;
+    --max-width1: 100%;
     --fixed-width: 500px;
     --fluid-width: 90vw;
     --breakpoint-lg: 992px;
