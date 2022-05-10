@@ -6,7 +6,7 @@ const FromInfo = ({ name, value, type, onChange, labelText }) => {
             <label htmlFor={name} className='form-label'>
                 {labelText || name}
             </label>
-            <input type={type} uservalue={value} username={name} onChange={onChange} className='form-input-elements' />
+            <input type={type} value={value} name={name} onChange={onChange} className='form-input-elements' />
         </div>
     );
 };
