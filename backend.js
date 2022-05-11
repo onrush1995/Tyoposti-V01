@@ -1,19 +1,58 @@
+// express library setup
 import express from 'express';
+const app = express();
+
+// For the .ENV File setup
 import dotenv from 'dotenv';
 dotenv.config();
-import errorHandling from './tyopsotimiddleware/express-error-handler.js';
+
+// Middleware setup
 import unknownMiddleware from './tyopsotimiddleware/unknown.js';
+import errorHandling from './tyopsotimiddleware/express-error-handler.js';
 
-const app = express();
-const PORT = process.env.PORT || 4000;
+// Mongo DB connection file
+import { connectDataBase } from './mongoDB/mongooseConnection.js';
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
+let notes = [
+    {
+        id: 1,
+        content: 'HTML is easy',
+        date: '2022-05-30T17:30:31.098Z',
+        important: true
+    },
+    {
+        id: 2,
+        content: 'Browser can execute only Javascript',
+        date: '2022-05-30T18:39:34.091Z',
+        important: false
+    },
+    {
+        id: 3,
+        content: 'GET and POST are the most important methods of HTTP protocol',
+        date: '2022-05-30T19:20:14.298Z',
+        important: true
+    }
+];
+
+app.get('/', (request, response) => {
+    //throw new Error('This is an intentional error');
+    response.json(notes);
 });
 
 app.use(unknownMiddleware);
 app.use(errorHandling);
 
-app.listen(PORT, () => {
-    console.log(`Example app listening on port ${PORT}`);
-});
+const PORT = process.env.PORT || 3001;
+
+const dbStart = async () => {
+    try {
+        await connectDataBase(process.env.MONGOOSE_URL);
+        app.listen(PORT, () => {
+            console.log(`Server running on port ${PORT}`);
+        });
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+dbStart();
