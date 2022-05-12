@@ -13,6 +13,12 @@ import errorHandling from './tyopsotimiddleware/express-error-handler.js';
 // Mongo DB connection file
 import { connectDataBase } from './mongoDB/mongooseConnection.js';
 
+// Routers
+
+import authenticationRoutes from './routes/authenticationRoutes.js';
+
+app.use(express.json());
+
 let notes = [
     {
         id: 1,
@@ -39,6 +45,7 @@ app.get('/', (request, response) => {
     response.json(notes);
 });
 
+app.use('/api/v1/auth', authenticationRoutes);
 app.use(unknownMiddleware);
 app.use(errorHandling);
 
