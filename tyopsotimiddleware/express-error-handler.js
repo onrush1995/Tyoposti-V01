@@ -10,8 +10,12 @@ const errorHandling = (err, req, res, next) => {
         //errorValue.msg = err.message;
         errorValue.msg = Object.values(err.errors).map((item) => item.message).join(' | ');
     }
+
+    if (err.code && err.code === 11000) {
+        errorValue.httpStatusCodes = StatusCodes.BAD_REQUEST;
+        errorValue.msg = `${Object.keys(err.keyValue)} must be distinct `;
+    }
     //res.status(errorValue.httpStatusCodes).json({ msg: err });
     res.status(errorValue.httpStatusCodes).json({ msg: errorValue.msg });
 };
-
 export default errorHandling;
