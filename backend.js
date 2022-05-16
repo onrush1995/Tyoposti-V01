@@ -14,8 +14,8 @@ import errorHandling from './tyopsotimiddleware/express-error-handler.js';
 import { connectDataBase } from './mongoDB/mongooseConnection.js';
 
 // Routers
-
-import authenticationRoutes from './routes/authenticationRoutes.js';
+import authRoutes from './routes/authRoutes.js';
+import tyoRouter from './routes/tyoRouter.js';
 
 app.use(express.json());
 
@@ -45,7 +45,8 @@ app.get('/', (request, response) => {
     response.json(notes);
 });
 
-app.use('/api/v1/auth', authenticationRoutes);
+app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/jobs', tyoRouter);
 app.use(unknownMiddleware);
 app.use(errorHandling);
 
