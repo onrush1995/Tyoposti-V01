@@ -1,6 +1,6 @@
 const errorHandling = (err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Something broke!');
+    console.log(err);
+    res.status(500).json({ msg: err });
 };
 
 export default errorHandling;
