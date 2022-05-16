@@ -1,5 +1,5 @@
-import validator from 'validator';
 import mongoose from 'mongoose';
+import validator from 'validator';
 
 const ClientSchema = new mongoose.Schema({
     name: {
@@ -53,4 +53,4 @@ const ClientSchema = new mongoose.Schema({
 });
 
 // Client will create a database in mongoDb
-export default mongoose.model('Client', ClientSchema);
+export default mongoose.model('User', ClientSchema);
