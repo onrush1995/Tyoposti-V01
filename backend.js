@@ -6,6 +6,8 @@ const app = express();
 import dotenv from 'dotenv';
 dotenv.config();
 
+import 'express-async-errors';
+
 // Middleware setup
 import unknownMiddleware from './tyopsotimiddleware/unknown.js';
 import errorHandling from './tyopsotimiddleware/express-error-handler.js';
