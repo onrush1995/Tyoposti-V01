@@ -3,8 +3,9 @@ const errorHandling = (err, req, res, next) => {
     // It will display error message to the console along with postman with the help of Quokka.js extention
     console.log(err.message);
     const errorValue = {
-        httpStatusCodes: StatusCodes.INTERNAL_SERVER_ERROR,
-        msg: 'Please check and try again!'
+        // if statuscode present use that one or use the right side
+        httpStatusCodes: err.httpStatusCodes || StatusCodes.INTERNAL_SERVER_ERROR,
+        msg: err.message || 'Please check and try again!'
     };
     if (err.name === 'ValidationError') {
         errorValue.httpStatusCodes = StatusCodes.BAD_REQUEST;
