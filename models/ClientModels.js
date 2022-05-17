@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import validator from 'validator';
+import bcrypt from 'bcryptjs';
 
 const ClientSchema = new mongoose.Schema({
     name: {
@@ -50,6 +51,16 @@ const ClientSchema = new mongoose.Schema({
         maxlength: 30,
         default: 'your city'
     }
+});
+
+// ClientSchema.pre('save', function() {
+//     console.log(this.password);
+// });
+
+// Hashing password with the help of bcrypt
+ClientSchema.pre('save', async function() {
+    const salt = await bcrypt.genSalt(12);
+    this.password = await bcrypt.hash(this.password, salt);
 });
 
 // User will create a database in mongoDb
