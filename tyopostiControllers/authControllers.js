@@ -1,25 +1,6 @@
 import User from '../models/ClientModels.js';
 import { StatusCodes } from 'http-status-codes';
-
-class APIErrorCode extends Error {
-    constructor(message) {
-        super(message);
-    }
-}
-
-class Bad_request_err_code extends APIErrorCode {
-    constructor(message) {
-        super(message);
-        this.httpStatusCodes = StatusCodes.BAD_REQUEST;
-    }
-}
-
-class Not_found_err_code extends APIErrorCode {
-    constructor(message) {
-        super(message);
-        this.httpStatusCodes = StatusCodes.NOT_FOUND;
-    }
-}
+import { Bad_request_err_code } from '../errors/index.js';
 
 const register = async (request, response, next) => {
     const { name, email, password } = request.body;
