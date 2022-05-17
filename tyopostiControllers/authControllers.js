@@ -9,6 +9,11 @@ const register = async (request, response, next) => {
         throw new Bad_request_err_code('All values are required');
     }
 
+    const clientAlreadyExists = await User.findOne({ email });
+    if (clientAlreadyExists) {
+        throw new Bad_request_err_code('It is a registered email, hence can not use again');
+    }
+
     const user = await User.create({ name, email, password });
     response.status(StatusCodes.CREATED).json({ user });
 };
