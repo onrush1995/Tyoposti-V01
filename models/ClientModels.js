@@ -52,5 +52,5 @@ const ClientSchema = new mongoose.Schema({
     }
 });
 
-// Client will create a database in mongoDb
+// User will create a database in mongoDb
 export default mongoose.model('User', ClientSchema);

@@ -6,6 +6,7 @@ const app = express();
 import dotenv from 'dotenv';
 dotenv.config();
 
+// Bringing error code
 import 'express-async-errors';
 
 // Middleware setup
@@ -19,6 +20,7 @@ import { connectDataBase } from './mongoDB/mongooseConnection.js';
 import authRoutes from './routes/authRoutes.js';
 import tyoRouter from './routes/tyoRouter.js';
 
+// This will represent our data in a json format
 app.use(express.json());
 
 let notes = [

@@ -1,6 +1,7 @@
 import { StatusCodes } from 'http-status-codes';
 const errorHandling = (err, req, res, next) => {
-    console.log(err);
+    // It will display error message to the console along with postman with the help of Quokka.js extention
+    console.log(err.message);
     const errorValue = {
         httpStatusCodes: StatusCodes.INTERNAL_SERVER_ERROR,
         msg: 'Please check and try again!'
