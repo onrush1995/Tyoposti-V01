@@ -15,8 +15,9 @@ const register = async (request, response, next) => {
     }
 
     const user = await User.create({ name, email, password });
-    user.createJSToken();
-    response.status(StatusCodes.CREATED).json({ user });
+    const oAuthToken = user.createOAuth();
+    // oAuthToken will print token number in the console
+    response.status(StatusCodes.CREATED).json({ user, oAuthToken });
 };
 
 const login = (req, res) => {

@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
+import OAuth from 'jsonwebtoken';
 
 const ClientSchema = new mongoose.Schema({
     name: {
@@ -63,9 +64,9 @@ ClientSchema.pre('save', async function() {
     this.password = await bcrypt.hash(this.password, salt);
 });
 
-//JSON web Token creation
-ClientSchema.methods.createJSToken = function() {
-    console.log(this);
+//JSON web Token creation for authentication purposes
+ClientSchema.methods.createOAuth = function() {
+    return OAuth.sign({ clientId: this._id }, 'OAuthsecret', { expiresIn: '1d' });
 };
 
 // User will create a database in mongoDb
