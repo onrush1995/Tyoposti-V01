@@ -66,7 +66,7 @@ ClientSchema.pre('save', async function() {
 
 //JSON web Token creation for authentication purposes
 ClientSchema.methods.createOAuth = function() {
-    return OAuth.sign({ clientId: this._id }, 'OAuthsecret', { expiresIn: '1d' });
+    return OAuth.sign({ clientId: this._id }, process.env.OAUTH_SECRET, { expiresIn: process.env.OAUTH_EXPIRE });
 };
 
 // User will create a database in mongoDb
