@@ -63,5 +63,10 @@ ClientSchema.pre('save', async function() {
     this.password = await bcrypt.hash(this.password, salt);
 });
 
+//JSON web Token creation
+ClientSchema.methods.createJSToken = function() {
+    console.log(this);
+};
+
 // User will create a database in mongoDb
 export default mongoose.model('User', ClientSchema);

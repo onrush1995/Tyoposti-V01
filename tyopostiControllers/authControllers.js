@@ -15,6 +15,7 @@ const register = async (request, response, next) => {
     }
 
     const user = await User.create({ name, email, password });
+    user.createJSToken();
     response.status(StatusCodes.CREATED).json({ user });
 };
 
