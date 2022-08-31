@@ -1,5 +1,6 @@
 // express library setup
 import express from 'express';
+import cors from 'cors';
 const app = express();
 
 // For the .ENV File setup
@@ -20,6 +21,8 @@ import { connectDataBase } from './mongoDB/mongooseConnection.js';
 import authRoutes from './routes/authRoutes.js';
 import tyoRouter from './routes/tyoRouter.js';
 
+//cors pacage import
+app.use(cors());
 // This will represent our data in a json format
 app.use(express.json());
 
@@ -45,8 +48,7 @@ let notes = [
 ];
 
 app.get('/', (request, response) => {
-    //throw new Error('This is an intentional error');
-    response.json(notes);
+    response.json({ msg: 'Moniruzzaman' });
 });
 
 app.use('/api/v1/auth', authRoutes);
