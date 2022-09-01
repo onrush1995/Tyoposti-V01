@@ -18,7 +18,7 @@ const Signup = () => {
         setValues
     ] = useState(primaryData);
 
-    const { showNotification, isLoading, poupNotification } = useFullContext();
+    const { showNotification, isLoading, poupNotification, signupUser } = useFullContext();
 
     const onChange = (event) => {
         setValues({ ...values, [event.target.name]: event.target.value });
@@ -32,6 +32,13 @@ const Signup = () => {
         if (!email || !password || (!isClient && !name)) {
             poupNotification();
             return;
+        }
+        const currentUser = { name, email, password };
+        if (isClient) {
+            console.log('Registered entity');
+        }
+        else {
+            signupUser(currentUser);
         }
         console.log(values);
     };
@@ -56,8 +63,7 @@ const Signup = () => {
                 {/*------- user password-------*/}
                 <FromInfo type='password' name='password' value={values.password} onChange={onChange} />
 
-                <button type='submit' className='buttn submit-button'>
-                    {' '}
+                <button type='submit' className='buttn submit-button' disabled={isLoading}>
                     submit
                 </button>
                 <p>

@@ -1,4 +1,10 @@
-import { WARNING_NOTIFICATION, CLEAR_WARNING } from './activity';
+import {
+    WARNING_NOTIFICATION,
+    CLEAR_WARNING,
+    SIGNUP_USER_START,
+    SIGNUP_USER_SUCCESS,
+    SIGNUP_USER_ERROR
+} from './activity';
 
 export const reactReducer = (state, notification) => {
     if (notification.type === WARNING_NOTIFICATION) {

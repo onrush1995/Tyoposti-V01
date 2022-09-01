@@ -48,7 +48,7 @@ let notes = [
 ];
 
 app.get('/', (request, response) => {
-    response.json({ msg: 'Moniruzzaman' });
+    response.json(notes);
 });
 
 app.use('/api/v1/auth', authRoutes);
