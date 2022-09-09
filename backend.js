@@ -21,8 +21,6 @@ import { connectDataBase } from './mongoDB/mongooseConnection.js';
 import authRoutes from './routes/authRoutes.js';
 import tyoRouter from './routes/tyoRouter.js';
 
-//cors pacage import
-app.use(cors());
 // This will represent our data in a json format
 app.use(express.json());
 
@@ -49,6 +47,10 @@ let notes = [
 
 app.get('/', (request, response) => {
     response.json(notes);
+});
+
+app.get('/api/v1', (request, response) => {
+    response.json({ msg: 'hi & welcome' });
 });
 
 app.use('/api/v1/auth', authRoutes);
